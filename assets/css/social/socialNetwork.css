@@ -1,0 +1,27 @@
+#social-network {
+    width: 380px;
+    height: 120px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.195);
+    backdrop-filter: blur(14.6667px);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 5px 25px;
+}
+
+#social-network .icon_container {
+    margin: 15px;
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    box-shadow: 6.53145e-16px 10.6667px 21.3333px rgba(51, 51, 51, 0.422), inset -2.78675e-16px -4.55111px 4.55111px #DFDFDF, inset 2.78675e-16px 4.55111px 4.55111px #FFFFFF;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#social-network .icon_container img {
+    height: 50px;
+}
