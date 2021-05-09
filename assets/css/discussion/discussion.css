@@ -1,0 +1,134 @@
+#discussion {
+    width: 330px;
+    height: 489px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, 0.31);
+    border-radius: 20px 25px 20px 20px;
+    padding-bottom: 10px;
+}
+
+#discussion header {
+    width: 100%;
+    height: 10%;
+    background: #E9E9E9;
+    border-radius: 20px 20px 0px 0px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+#discussion header h1 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color: #0A2340;
+}
+
+#discussion .message_wrapper {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 20px;
+}
+
+#discussion .message_wrapper .message_container {
+    height: auto;
+    width: 100%;
+    display: flex;
+    margin: 10px 0px;
+}
+
+.message_wrapper .message_container picture {
+    height: 100%;
+    width: 35px;
+}
+
+.message_wrapper .message_container picture img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.message_wrapper .message_container .content {
+    height: 100%;
+    width: auto;
+    background: #80C7FF;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 10px;
+    margin-left: 10px;
+    margin-right: auto;
+}
+
+.message_wrapper .message_container .content h6 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.message_wrapper .message_container .content p {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: #FFFFFF;
+    opacity: 0.8;
+}
+
+#discussion footer {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    padding: 0px 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+#discussion .input_container {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    background: #E9E9E9;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+
+#discussion .input_container button {
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#discussion .input_container button:first-child {
+    width: 22px;
+    height: 22px;
+    background: #818181;
+}
+
+#discussion .input_container button:last-child {
+    background: #80C7FF;
+}
+
+#discussion .input_container button img {
+    height: 20px;
+}
+
+#discussion .input_container input[type="text"] {
+    outline: none;
+    border: none;
+    background: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: #5F5F5F;
+}
