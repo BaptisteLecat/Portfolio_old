@@ -1,5 +1,6 @@
 <?php 
 
+namespace App\Model\Entity;
 class Profile  
 {
     private $id;
@@ -9,7 +10,7 @@ class Profile
     private $picture;
     private $cv;
 
-    public function __construct(int $id, string $name, string $firstName, string $birthday, string $picture, string $cv) {
+    public function __construct(int $id, string $name, string $firstName, string $birthday, string $picture, string $cv = null) {
         $this->id = $id;
         $this->name = $name;
         $this->firstName = $firstName;
