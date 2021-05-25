@@ -10,10 +10,10 @@ class Project
     private $picture;
     private $startDate;
     private $endDate;
-    private $list_category;
+    private $category;
     private $list_technology;
 
-    public function __construct(int $id, string $title, string $content, string $picture, string $startDate, string $endDate = null) {
+    public function __construct(int $id, string $title, string $content, string $picture, string $startDate, string $endDate = null, Category $category) {
         $this->id = $id;
         $this->title = $title;
         $this->content = $content;
@@ -21,7 +21,7 @@ class Project
         $this->startDate = $startDate;
         $this->endDate = (!is_null($endDate)) ? $endDate : "En cours";
 
-        $this->list_category = array();
+        $this->category = $category;
         $this->list_technology = array();
     }
 
@@ -146,31 +146,23 @@ class Project
     }
 
     /**
-     * Get the value of list_category
+     * Get the value of category
      */ 
-    public function getList_category()
+    public function getCategory()
     {
-        return $this->list_category;
+        return $this->category;
     }
 
     /**
-     * Add a category to the current list.
+     * Set the value of category
      *
-     * @param Category $category
+     * @return  self
      */
-    public function addCategory(Category $category)
+    public function setCategory(Category $category)
     {
-        array_push($this->list_category, $category);
-    }
+        $this->category = $category;
 
-    /**
-     * Remove a category from the current list.
-     *
-     * @param Category $category
-     */
-    public function removeCategory(Category $category)
-    {
-        unset($this->list_category[array_search($category, $this->list_category)]);
+        return $this;
     }
 
     /**
