@@ -1,7 +1,6 @@
-
 <?php
 
-namespace App\Model\Settings;
+namespace App\Settings;
 
 use SimpleXMLElement;
 

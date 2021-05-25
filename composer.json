@@ -9,8 +9,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Monolog\\": "App/",
-            "Vendor\\Namespace\\": ""
+            "App\\": "App"
         }
     }
 }
