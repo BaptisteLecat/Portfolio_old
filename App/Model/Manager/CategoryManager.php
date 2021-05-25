@@ -29,6 +29,26 @@ class CategoryManager
         return $list_category;
     }
 
+
+    public static function selectCategoryFromId(int $categoryId)
+    {
+        $category = null;
+        try {
+            $request = PdoFactory::getPdo()->prepare("SELECT * FROM category WHERE category_id = :category_id");
+            $request->execute();
+            if($request->rowCount() > 0){
+                $result = $request->fetch();
+                $category = new Category($result["category_id"], $result["category_label"], $result["category_picture"]);
+            }
+        } catch (PDOException $e) {
+            throw new PDOException($e->getMessage());
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
+
+        return $category;
+    }
+
     public static function loadTechnologyForCategory(Category $category)
     {
         try {
