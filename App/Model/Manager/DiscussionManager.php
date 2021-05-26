@@ -5,7 +5,7 @@ namespace App\Model\Manager;
 use Exception;
 use PDOException;
 use App\PdoFactory;
-use Discussion;
+use App\Model\Entity\Discussion;
 
 class DiscussionManager
 {
@@ -17,7 +17,7 @@ class DiscussionManager
             $request->execute();
             while ($result = $request->fetch()) {
                 //Loading data of the sender.
-                $sender = ProfileManager::selectProfileFromId($result["discussion_idSender"]);
+                $sender = ProfileManager::selectProfileFromId($result["discussion_idsender"]);
                 $discussion = new Discussion($result["discussion_id"], $result["discussion_content"], $sender);
                 array_push($list_discussion, $discussion);
             }
