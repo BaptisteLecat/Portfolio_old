@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Model\Entity;
+
 use App\Model\Entity\Profile;
 
 class Discussion
