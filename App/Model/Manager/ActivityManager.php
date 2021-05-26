@@ -23,7 +23,7 @@ class ActivityManager
             }
 
             //Then select experience Activities.
-            $request = PdoFactory::getPdo()->prepare("SELECT * FROM activity, experience WHERE experience.course_id = activity.activity_id");
+            $request = PdoFactory::getPdo()->prepare("SELECT * FROM activity, experience WHERE experience.experience_id = activity.activity_id");
             $request->execute();
             while ($result = $request->fetch()) {
                 $experience = new Experience($result["activity_id"], $result["activity_title"], $result["activity_date"], $result["activity_picture"]);
