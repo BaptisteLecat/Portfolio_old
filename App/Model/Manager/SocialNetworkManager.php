@@ -26,6 +26,6 @@ class SocialNetworkManager
             throw new Exception($e->getMessage());
         }
 
-        return $socialNetwork;
+        return $list_socialNetwork;
     }
 }
