@@ -10,4 +10,9 @@ class Experience extends Activity
     {
         parent::__construct($id, $title, $date, $picture);
     }
+
+    public function getInstanceName()
+    {
+        return (new \ReflectionClass($this))->getShortName();
+    }
 }
