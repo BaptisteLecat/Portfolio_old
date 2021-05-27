@@ -3,27 +3,15 @@
             <h1>Discussion</h1>
         </header>
         <div class="message_wrapper">
-            <div class="message_container">
-                <picture><img src="assets/img/profile/baptisteLecat.png" alt=""></picture>
-                <div class="content">
-                    <h6>Baptiste Lecat</h6>
-                    <p>Bonjour je suis heureux de vous rencontrer, bienvenue sur mon Portfolio !</p>
+            <?php foreach ($this->list_discussion as $discussion) { ?>
+                <div class="message_container">
+                    <picture><img src="assets/img/profile/<?= $discussion->getSender()->getPicture(); ?>" alt=""></picture>
+                    <div class="content">
+                        <h6><?= $discussion->getSender()->getName()." ". $discussion->getSender()->getFirstName(); ?></h6>
+                        <p><?= $discussion->getContent(); ?></p>
+                    </div>
                 </div>
-            </div>
-            <div class="message_container">
-                <picture><img src="assets/img/profile/baptisteLecat.png" alt=""></picture>
-                <div class="content">
-                    <h6>Baptiste Lecat</h6>
-                    <p>Passionné par l’informatique, le développement, l’UX et UI. Je souhaite vous proposez un expérience originale sur mon site.</p>
-                </div>
-            </div>
-            <div class="message_container">
-                <picture><img src="assets/img/profile/baptisteLecat.png" alt=""></picture>
-                <div class="content">
-                    <h6>Baptiste Lecat</h6>
-                    <p>Bonne visite !</p>
-                </div>
-            </div>
+            <?php } ?>
         </div>
         <footer>
             <div class="input_container">

@@ -16,5 +16,6 @@ class HomeController extends MainController
         foreach ($this->list_activity as $activity) {
             require("../templates/module/card-info.php");
         }
+        require("../templates/module/discussion.php");
     }
 }
