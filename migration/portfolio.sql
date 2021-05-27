@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : Dim 16 mai 2021 à 11:09
+-- Généré le : jeu. 27 mai 2021 à 09:37
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -21,6 +21,34 @@ SET time_zone = "+00:00";
 -- Base de données : `portfolio`
 --
 
+DELIMITER $$
+--
+-- Procédures
+--
+DROP PROCEDURE IF EXISTS `INSERT_COURSE`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `INSERT_COURSE` (IN `_title` VARCHAR(255), IN `_date` VARCHAR(255), IN `_picture` VARCHAR(255))  BEGIN
+	DECLARE _activityId integer unsigned default null; -- valeur de retour pour connaitre l'id de l'insertion.
+
+	INSERT INTO activity (activity_title, activity_date, activity_picture) VALUES (_title, _date, _picture); -- Insertion des valeurs dans la table mère
+    set _activityId = last_insert_id(); -- récupération de l'id pour donné le meme id à la table fille
+    INSERT INTO course (course_id) VALUES (_activityId); -- insertion dans la table fille
+
+	SELECT _activityId; -- retour de l'id
+END$$
+
+DROP PROCEDURE IF EXISTS `INSERT_EXPERIENCE`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `INSERT_EXPERIENCE` (IN `_title` VARCHAR(255), IN `_date` VARCHAR(255), IN `_picture` VARCHAR(255))  BEGIN
+	DECLARE _activityId integer unsigned default null; -- valeur de retour pour connaitre l'id de l'insertion.
+
+	INSERT INTO activity (activity_title, activity_date, activity_picture) VALUES (_title, _date, _picture); -- Insertion des valeurs dans la table mère
+    set _activityId = last_insert_id(); -- récupération de l'id pour donné le meme id à la table fille
+    INSERT INTO experience (experience_id) VALUES (_activityId); -- insertion dans la table fille
+
+	SELECT _activityId; -- retour de l'id
+END$$
+
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -31,10 +59,18 @@ DROP TABLE IF EXISTS `activity`;
 CREATE TABLE IF NOT EXISTS `activity` (
   `activity_id` int(11) NOT NULL AUTO_INCREMENT,
   `activity_title` varchar(255) NOT NULL,
-  `activity_date` date NOT NULL,
+  `activity_date` varchar(255) NOT NULL,
   `activity_picture` text NOT NULL,
   PRIMARY KEY (`activity_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `activity`
+--
+
+INSERT INTO `activity` (`activity_id`, `activity_title`, `activity_date`, `activity_picture`) VALUES
+(1, 'BTS SIO', '2020-2021', 'test'),
+(2, 'SUPER U', 'Juin 2020', 'yt');
 
 -- --------------------------------------------------------
 
@@ -48,7 +84,14 @@ CREATE TABLE IF NOT EXISTS `category` (
   `category_label` varchar(255) NOT NULL,
   `category_picture` text NOT NULL,
   PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `category`
+--
+
+INSERT INTO `category` (`category_id`, `category_label`, `category_picture`) VALUES
+(1, 'Web', 'web');
 
 -- --------------------------------------------------------
 
@@ -64,6 +107,13 @@ CREATE TABLE IF NOT EXISTS `category_technology` (
   KEY `constraintCT_technology` (`technology_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `category_technology`
+--
+
+INSERT INTO `category_technology` (`category_id`, `technology_id`) VALUES
+(1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -74,7 +124,14 @@ DROP TABLE IF EXISTS `course`;
 CREATE TABLE IF NOT EXISTS `course` (
   `course_id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`course_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `course`
+--
+
+INSERT INTO `course` (`course_id`) VALUES
+(1);
 
 -- --------------------------------------------------------
 
@@ -85,11 +142,20 @@ CREATE TABLE IF NOT EXISTS `course` (
 DROP TABLE IF EXISTS `discussion`;
 CREATE TABLE IF NOT EXISTS `discussion` (
   `discussion_id` int(11) NOT NULL AUTO_INCREMENT,
-  `discussion_content` int(11) NOT NULL,
+  `discussion_content` text NOT NULL,
   `discussion_idsender` int(11) NOT NULL,
   PRIMARY KEY (`discussion_id`),
   KEY `constraintDiscussion_idProfile` (`discussion_idsender`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `discussion`
+--
+
+INSERT INTO `discussion` (`discussion_id`, `discussion_content`, `discussion_idsender`) VALUES
+(1, 'Bonjour je suis heureux de vous rencontrer, bienvenue sur mon Portfolio !', 1),
+(2, 'Passionné par l’informatique, le développement, l’UX et UI. Je souhaite vous proposez un expérience originale sur mon site.', 1),
+(3, 'Bonne visite !', 1);
 
 -- --------------------------------------------------------
 
@@ -101,7 +167,14 @@ DROP TABLE IF EXISTS `experience`;
 CREATE TABLE IF NOT EXISTS `experience` (
   `experience_id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`experience_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `experience`
+--
+
+INSERT INTO `experience` (`experience_id`) VALUES
+(2);
 
 -- --------------------------------------------------------
 
@@ -111,14 +184,21 @@ CREATE TABLE IF NOT EXISTS `experience` (
 
 DROP TABLE IF EXISTS `profile`;
 CREATE TABLE IF NOT EXISTS `profile` (
-  `profile_id` int(11) NOT NULL,
+  `profile_id` int(11) NOT NULL AUTO_INCREMENT,
   `profile_name` varchar(255) NOT NULL,
   `profile_firstname` varchar(255) NOT NULL,
   `profile_birthday` date NOT NULL,
   `profile_picture` text NOT NULL,
   `profile_cv` text,
   PRIMARY KEY (`profile_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `profile`
+--
+
+INSERT INTO `profile` (`profile_id`, `profile_name`, `profile_firstname`, `profile_birthday`, `profile_picture`, `profile_cv`) VALUES
+(1, 'Lecat', 'Baptiste', '2001-10-26', 'ser', NULL);
 
 -- --------------------------------------------------------
 
@@ -128,28 +208,23 @@ CREATE TABLE IF NOT EXISTS `profile` (
 
 DROP TABLE IF EXISTS `project`;
 CREATE TABLE IF NOT EXISTS `project` (
-  `project_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL AUTO_INCREMENT,
   `project_title` varchar(255) NOT NULL,
   `project_content` text NOT NULL,
   `project_picture` text NOT NULL,
   `project_startdate` date NOT NULL,
-  `project_enddate` date NOT NULL,
-  PRIMARY KEY (`project_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
+  `project_enddate` date DEFAULT NULL,
+  `project_categoryId` int(11) NOT NULL,
+  PRIMARY KEY (`project_id`),
+  KEY `constraintProject_idCategory` (`project_categoryId`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
--- Structure de la table `project_category`
+-- Déchargement des données de la table `project`
 --
 
-DROP TABLE IF EXISTS `project_category`;
-CREATE TABLE IF NOT EXISTS `project_category` (
-  `project_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
-  PRIMARY KEY (`project_id`,`category_id`),
-  KEY `constraintPC_idCategory` (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `project` (`project_id`, `project_title`, `project_content`, `project_picture`, `project_startdate`, `project_enddate`, `project_categoryId`) VALUES
+(1, 'Todo', 'Une application Web.', 'test', '2021-05-26', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -165,6 +240,13 @@ CREATE TABLE IF NOT EXISTS `project_technology` (
   KEY `constraintPT_idTechnology` (`technology_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `project_technology`
+--
+
+INSERT INTO `project_technology` (`project_id`, `technology_id`) VALUES
+(1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -178,7 +260,14 @@ CREATE TABLE IF NOT EXISTS `socialnetwork` (
   `socialnetwork_picture` text NOT NULL,
   `socialnetwork_link` text NOT NULL,
   PRIMARY KEY (`socialnetwork_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `socialnetwork`
+--
+
+INSERT INTO `socialnetwork` (`socialnetwork_id`, `socialnetwork_label`, `socialnetwork_picture`, `socialnetwork_link`) VALUES
+(1, 'Youtube', 'test', 'erer');
 
 -- --------------------------------------------------------
 
@@ -192,7 +281,15 @@ CREATE TABLE IF NOT EXISTS `technology` (
   `technology_label` varchar(255) NOT NULL,
   `technology_picture` text NOT NULL,
   PRIMARY KEY (`technology_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `technology`
+--
+
+INSERT INTO `technology` (`technology_id`, `technology_label`, `technology_picture`) VALUES
+(1, 'PHP', 'php'),
+(2, 'Laravel', 'Laravel');
 
 --
 -- Contraintes pour les tables déchargées
@@ -206,17 +303,28 @@ ALTER TABLE `category_technology`
   ADD CONSTRAINT `constraintCT_technology` FOREIGN KEY (`technology_id`) REFERENCES `technology` (`technology_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Contraintes pour la table `course`
+--
+ALTER TABLE `course`
+  ADD CONSTRAINT `constraintCourse_idCourse` FOREIGN KEY (`course_id`) REFERENCES `activity` (`activity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Contraintes pour la table `discussion`
 --
 ALTER TABLE `discussion`
   ADD CONSTRAINT `constraintDiscussion_idProfile` FOREIGN KEY (`discussion_idsender`) REFERENCES `profile` (`profile_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `project_category`
+-- Contraintes pour la table `experience`
 --
-ALTER TABLE `project_category`
-  ADD CONSTRAINT `constraintPC_idCategory` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `constraintPC_idProject` FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `experience`
+  ADD CONSTRAINT `constraintExperience_idExperience` FOREIGN KEY (`experience_id`) REFERENCES `activity` (`activity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `project`
+--
+ALTER TABLE `project`
+  ADD CONSTRAINT `constraintProject_idCategory` FOREIGN KEY (`project_categoryId`) REFERENCES `category` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `project_technology`
