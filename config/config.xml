@@ -7,6 +7,9 @@
     </application>
 
     <dbCredentials>
-
+        <dbName>portfolio</dbName>
+        <dbHost>localhost</dbHost>
+        <dbUser>root</dbUser>
+        <dbPassword></dbPassword>
     </dbCredentials>
 </main>
