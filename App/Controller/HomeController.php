@@ -27,6 +27,9 @@ class HomeController extends MainController
         if ($this->getNbActiveSocialNetwork() > 0) {
             require("../templates/module/social-network.php");
         }
+
+        $projectController = new ProjectController();
+        $projectController->display();
     }
 
     private function getNbActiveSocialNetwork()

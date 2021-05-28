@@ -5,22 +5,12 @@
                 <h1>Projets</h1>
             </header>
             <ul>
+            <?php foreach($this->list_category as $category){ ?>
                 <li class="selected">
-                    <img src="assets/img/project/navBar/027-web development.svg" alt="">
-                    <h6>Web</h6>
+                    <img src="assets/img/project/category/<?= $category->getPicture(); ?>" alt="<?= $category->getLabel();?>" title="<?= $category->getLabel();?>">
+                    <h6><?= $category->getLabel(); ?></h6>
                 </li>
-                <li>
-                    <img src="assets/img/project/navBar/004-user interface.svg" alt="">
-                    <h6>Mobile</h6>
-                </li>
-                <li>
-                    <img src="assets/img/project/navBar/018-user interface.svg" alt="">
-                    <h6>Maquette</h6>
-                </li>
-                <li>
-                    <img src="assets/img/project/navBar/027-user interface.svg" alt="">
-                    <h6>Logiciel</h6>
-                </li>
+                <?php } ?>
             </ul>
         </nav>
         <div class="app_container">
@@ -30,94 +20,32 @@
             <section>
                 <h3>Languages utilisés</h3>
                 <div class="language_wrapper">
+                <?php foreach($this->technologiesForCategory() as $technology){ ?>
                     <div class="language">
-                        <img src="assets/img/project/languages/027-php.svg" alt="">
-                        <h6>PHP</h6>
+                        <img src="assets/img/project/technology/<?= $technology->getPicture(); ?>" alt="<?= $technology->getLabel() ?>" title="<?= $technology->getLabel() ?>">
+                        <h6><?= $technology->getLabel() ?></h6>
                     </div>
-                    <div class="language">
-                        <img src="assets/img/project/languages/030-html-5.svg" alt="">
-                        <h6>HTML</h6>
-                    </div>
-                    <div class="language">
-                        <img src="assets/img/project/languages/027-php.svg" alt="">
-                        <h6>PHP</h6>
-                    </div>
-                    <div class="language">
-                        <img src="assets/img/project/languages/030-html-5.svg" alt="">
-                        <h6>HTML</h6>
-                    </div>
-                    <div class="language">
-                        <img src="assets/img/project/languages/027-php.svg" alt="">
-                        <h6>PHP</h6>
-                    </div>
-                    <div class="language">
-                        <img src="assets/img/project/languages/030-html-5.svg" alt="">
-                        <h6>HTML</h6>
-                    </div>
-                    <div class="language">
-                        <img src="assets/img/project/languages/027-php.svg" alt="">
-                        <h6>PHP</h6>
-                    </div>
-                    <div class="language">
-                        <img src="assets/img/project/languages/030-html-5.svg" alt="">
-                        <h6>HTML</h6>
-                    </div>
+                    <?php } ?>
                 </div>
             </section>
             <section>
                 <h3>Mes projets</h3>
                 <div class="project_wrapper">
-                    <div class="project">
-                        <picture>
-                            <img src="assets/img/project/thumbnails/001-user interface.svg" alt="">
-                        </picture>
-                        <div class="content">
-                            <h6>Application Todo</h6>
-                            <p>Cette application web permet la gestion de tâches.</p>
-                        </div>
-                        <footer>
-                            <p>2020 / 2021</p>
-                        </footer>
-                    </div>
 
+                <?php foreach($this->projectsForCategory() as $project){ ?>
                     <div class="project">
                         <picture>
-                            <img src="assets/img/project/thumbnails/001-user interface.svg" alt="">
+                            <img src="assets/img/project/thumbnails/<?= $project->getPicture(); ?>" alt="<?= $project->getTitle(); ?>" title="<?= $project->getTitle(); ?>">
                         </picture>
                         <div class="content">
-                            <h6>Application Todo</h6>
-                            <p>Cette application web permet la gestion de tâches.</p>
+                            <h6><?= $project->getTitle(); ?></h6>
+                            <p><?= $project->getContent(); ?></p>
                         </div>
                         <footer>
-                            <p>2020 / 2021</p>
+                            <p><?= $project->getStringProjectDate(); ?></p>
                         </footer>
                     </div>
-
-                    <div class="project">
-                        <picture>
-                            <img src="assets/img/project/thumbnails/001-user interface.svg" alt="">
-                        </picture>
-                        <div class="content">
-                            <h6>Application Todo</h6>
-                            <p>Cette application web permet la gestion de tâches.</p>
-                        </div>
-                        <footer>
-                            <p>2020 / 2021</p>
-                        </footer>
-                    </div>
-
-                    <div class="project">
-                        <picture>
-                            <img src="assets/img/project/thumbnails/001-user interface.svg" alt="">
-                        </picture>
-                        <div class="content">
-                            <h6>Application Todo</h6>
-                            <p>Cette application web permet la gestion de tâches.</p>
-                        </div>
-                        <footer>
-                            <p>2020 / 2021</p>
-                        </footer>
-                    </div>
+                    <?php } ?>
 
                 </div>
             </section>
