@@ -5,6 +5,6 @@
             <h6><?= $profile->birthdayToAge(); ?> ans</h6>
         </div>
         <div class="btn_container">
-            <button>Voir le CV</button>
+            <button onclick="window.open('assets/documents/lecatBaptiste_CVAlternanceInformatique.pdf')">Voir le CV</button>
         </div>
     </div>
