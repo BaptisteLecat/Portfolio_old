@@ -1,11 +1,7 @@
     <div class="draggable-component" id="social-network">
+    <?php foreach($this->list_socialNetwork as $socialNetwork){ ?>
         <div class="icon_container">
-            <img src="assets/icons/social/youtube.svg" alt="">
+            <img src="assets/icons/social/<?= $socialNetwork->getPicture(); ?>" alt="">
         </div>
-        <div class="icon_container">
-            <img src="assets/icons/social/linkedIn.svg" alt="">
-        </div>
-        <div class="icon_container">
-            <img src="assets/icons/social/github.svg" alt="">
-        </div>
+        <?php } ?>
     </div>

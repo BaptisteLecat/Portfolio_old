@@ -23,5 +23,21 @@ class HomeController extends MainController
                 require("../templates/module/profile.php");
             }
         }
+
+        if ($this->getNbActiveSocialNetwork() > 0) {
+            require("../templates/module/social-network.php");
+        }
+    }
+
+    private function getNbActiveSocialNetwork()
+    {
+        $nbActiveSocialNetwork = 0;
+        foreach ($this->list_socialNetwork as $socialNetwork) {
+            if($socialNetwork->getActive()){
+                $nbActiveSocialNetwork++;
+            }
+        }
+
+        return $nbActiveSocialNetwork;
     }
 }
