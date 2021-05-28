@@ -192,4 +192,15 @@ class Project
     {
         unset($this->list_technology[array_search($technology, $this->list_technology)]);
     }
+
+    public function getStringProjectDate()
+    {
+        $string = $this->startDate." / ".$this->endDate;
+
+        if($this->endDate == "En cours"){
+            $string = $this->endDate;
+        }
+
+        return $string;
+    }
 }
