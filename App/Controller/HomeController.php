@@ -17,5 +17,11 @@ class HomeController extends MainController
             require("../templates/module/card-info.php");
         }
         require("../templates/module/discussion.php");
+
+        foreach ($this->list_profile as $profile) {
+            if($profile->getName() == "Lecat" && $profile->getFirstName() == "Baptiste"){
+                require("../templates/module/profile.php");
+            }
+        }
     }
 }
