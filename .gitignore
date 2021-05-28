@@ -1,3 +1,5 @@
 /vendor/
 config/config.xml
 App/.gitignore
+composer.json
+composer.lock
