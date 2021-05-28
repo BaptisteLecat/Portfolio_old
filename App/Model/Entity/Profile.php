@@ -1,7 +1,10 @@
-<?php 
+<?php
 
 namespace App\Model\Entity;
-class Profile  
+
+use DateTime;
+
+class Profile
 {
     private $id;
     private $name;
@@ -10,7 +13,8 @@ class Profile
     private $picture;
     private $cv;
 
-    public function __construct(int $id, string $name, string $firstName, string $birthday, string $picture, string $cv = null) {
+    public function __construct(int $id, string $name, string $firstName, string $birthday, string $picture, string $cv = null)
+    {
         $this->id = $id;
         $this->name = $name;
         $this->firstName = $firstName;
@@ -51,10 +55,18 @@ class Profile
 
     public function birthdayToAge()
     {
-        $age = date('Y') - $this->birthday; 
-        if (date('md') < date('md', strtotime($this->birthday))) { 
-            return $age - 1; 
-        } 
-        return $age; 
+        //Create a DateTime object using the user's date of birth.
+        $birthDate = new DateTime($this->birthday);
+
+        //We need to compare the user's date of birth with today's date.
+        $now = new DateTime();
+
+        //Calculate the time difference between the two dates.
+        $difference = $now->diff($birthDate);
+
+        //Get the difference in years, as we are looking for the user's age.
+        $age = $difference->y;
+
+        return $age;
     }
 }
