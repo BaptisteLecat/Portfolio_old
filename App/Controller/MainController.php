@@ -24,6 +24,13 @@ class MainController
 
     public function __construct()
     {
+        $this->list_technology = array();
+        $this->list_category = array();
+        $this->list_activity = array();
+        $this->list_discussion = array();
+        $this->list_profile = array();
+        $this->list_project = array();
+        $this->list_socialNetwork = array();
     }
 
     public function getContent()
@@ -48,6 +55,7 @@ class MainController
         $this->loadActivity();
         $this->loadDiscussion();
         $this->loadProfile();
+        $this->loadSocialNetwork();
     }
 
     public function loadTechnology()
