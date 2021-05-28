@@ -16,7 +16,7 @@ class SocialNetworkManager
             $request = PdoFactory::getPdo()->prepare("SELECT * FROM socialnetwork");
             $request->execute();
             while ($result = $request->fetch()) {
-                $socialNetwork = new SocialNetwork($result["socialnetwork_id"], $result["socialnetwork_label"], $result["socialnetwork_picture"], $result["socialnetwork_link"]);
+                $socialNetwork = new SocialNetwork($result["socialnetwork_id"], $result["socialnetwork_label"], $result["socialnetwork_picture"], $result["socialnetwork_link"], $result["socialnetwork_active"]);
                 array_push($list_socialNetwork, $socialNetwork);
             }
 

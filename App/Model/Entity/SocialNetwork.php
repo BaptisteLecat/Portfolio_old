@@ -8,12 +8,14 @@ class SocialNetwork
     private $label;
     private $picture;
     private $link;
+    private $active;
 
-    public function __construct(int $id, string $label, string $picture, string $link) {
+    public function __construct(int $id, string $label, string $picture, string $link, bool $active) {
         $this->id = $id;
         $this->label = $label;
         $this->picture = $picture;
         $this->link = $link;
+        $this->active = $active;
     }
 
     /**
@@ -92,6 +94,26 @@ class SocialNetwork
     public function setLink($link)
     {
         $this->link = $link;
+
+        return $this;
+    }
+
+        /**
+     * Get the value of active
+     */ 
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set the value of active
+     *
+     * @return  self
+     */ 
+    public function setActive(bool $active)
+    {
+        $this->active = $active;
 
         return $this;
     }
