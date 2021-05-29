@@ -10,7 +10,7 @@ class ProjectController extends MainController
     {
         parent::__construct();
         $this->loadProjectInfo();
-        $this->selectedCategory = (is_null($selectedCategory)) ? 0 : $selectedCategory; 
+        $this->setSelectedCategory($selectedCategory); 
     }
 
     public function setSelectedCategory($selectedCategory)

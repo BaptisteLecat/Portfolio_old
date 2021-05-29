@@ -28,7 +28,7 @@ class HomeController extends MainController
             require("../templates/module/social-network.php");
         }
 
-        $projectController = new ProjectController();
+        $projectController = new ProjectController(1);
         $projectController->display();
     }
 
