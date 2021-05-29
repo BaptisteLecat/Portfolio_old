@@ -195,12 +195,22 @@ class Project
 
     public function getStringProjectDate()
     {
-        $string = $this->startDate." / ".$this->endDate;
+        $string = $this->dateToString($this->startDate)." / ".$this->dateToString($this->endDate);
 
         if($this->endDate == "En cours"){
             $string = $this->endDate;
         }
 
         return $string;
+    }
+
+    /**
+     * Permet d'afficher une date au format francais.
+     * @param stringDate La string de la date.
+     * @return date Date format d-m-Y: "19-02-2018".
+     */
+    public function dateToString($date)
+    {
+        return date('d-m-Y', strtotime($date));
     }
 }
