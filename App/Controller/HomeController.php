@@ -13,9 +13,9 @@ class HomeController extends MainController
 
     public function display()
     {
-        foreach ($this->list_activity as $activity) {
-            require("../templates/module/card-info.php");
-        }
+        $activityController = new ActivityController(1);
+        $activityController->display();
+
         require("../templates/module/discussion.php");
 
         foreach ($this->list_profile as $profile) {

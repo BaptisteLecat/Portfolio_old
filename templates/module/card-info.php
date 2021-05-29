@@ -1,4 +1,3 @@
-<?php ob_start(); ?>
 <div class="draggable-component" draggable="true" id="card-info">
     <header>
         <h1><?= $activity->getInstanceName(); ?></h1>
@@ -16,5 +15,3 @@
         <button>En savoir plus</button>
     </div>
 </div>
-
-<?php $this->addContent(ob_get_clean()); ?>
