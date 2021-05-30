@@ -15,21 +15,27 @@ class HomeController extends MainController
     {
         $activityController = new ActivityController(1);
         $activityController->display();
-
+        
         require("../templates/module/discussion.php");
-
+        ob_end_clean();
+        
+        
         foreach ($this->list_profile as $profile) {
             if($profile->getName() == "Lecat" && $profile->getFirstName() == "Baptiste"){
                 require("../templates/module/profile.php");
+                ob_end_clean();
             }
         }
-
+        
         if ($this->getNbActiveSocialNetwork() > 0) {
             require("../templates/module/social-network.php");
+            ob_end_clean();
         }
-
+        
+        flush();
         $projectController = new ProjectController(1);
         $projectController->display();
+
     }
 
     private function getNbActiveSocialNetwork()

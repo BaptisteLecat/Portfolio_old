@@ -2,7 +2,9 @@
 
 namespace App\Model\Entity;
 
-class Activity
+use JsonSerializable;
+
+class Activity implements JsonSerializable
 {
     private $id;
     private $title;
@@ -14,6 +16,16 @@ class Activity
         $this->title = $title;
         $this->date = $date;
         $this->picture = $picture;
+    }
+
+    public function JsonSerialize()
+    {
+        return array(
+            'id' => $this->id,
+            'title' => $this->title,
+            'date' => $this->date,
+            'picture' => $this->picture
+        );
     }
 
     /**

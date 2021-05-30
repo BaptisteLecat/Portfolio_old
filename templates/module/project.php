@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <div class="draggable-component" id="project">
     <nav>
         <header>
@@ -55,3 +56,6 @@
         </section>
     </div>
 </div>
+
+<?php $this->addContent(ob_get_contents());
+ob_flush(); ?>

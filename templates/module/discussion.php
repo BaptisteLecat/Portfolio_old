@@ -1,3 +1,4 @@
+    <?php ob_start(); ?>
     <div class="draggable-component" id="discussion">
         <header>
             <h1>Discussion</h1>
@@ -7,7 +8,7 @@
                 <div class="message_container">
                     <picture><img src="assets/img/profile/<?= $discussion->getSender()->getPicture(); ?>" alt=""></picture>
                     <div class="content">
-                        <h6><?= $discussion->getSender()->getName()." ". $discussion->getSender()->getFirstName(); ?></h6>
+                        <h6><?= $discussion->getSender()->getName() . " " . $discussion->getSender()->getFirstName(); ?></h6>
                         <p><?= $discussion->getContent(); ?></p>
                     </div>
                 </div>
@@ -21,3 +22,7 @@
             </div>
         </footer>
     </div>
+
+    <?php
+    $this->addContent(ob_get_contents());
+    ?>

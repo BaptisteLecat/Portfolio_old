@@ -1,11 +1,12 @@
-<div class="draggable-component" draggable="true" id="card-info">
+<?php ob_start(); ?>
+<div class="draggable-component card-info" draggable="true" id="<?= $activity->getInstanceName(); ?>" name="<?= $index ?>">
     <header>
         <h1><?= $activity->getInstanceName(); ?></h1>
     </header>
     <div class="picture_container">
-        <button><img src="assets/icons/next.svg" alt=""></button>
+        <button name="previous"><img src="assets/icons/next.svg" alt=""></button>
         <picture><img src="assets/img/<?= $activity->getInstanceName(); ?>/<?= $activity->getPicture(); ?>" alt=""></picture>
-        <button><img src="assets/icons/next.svg" alt=""></button>
+        <button name="next"><img src="assets/icons/next.svg" alt=""></button>
     </div>
     <div class="content">
         <h5><?= $activity->getTitle(); ?></h5>
@@ -15,3 +16,5 @@
         <button>En savoir plus</button>
     </div>
 </div>
+
+<?php $this->addContent(ob_get_contents()); ?>
