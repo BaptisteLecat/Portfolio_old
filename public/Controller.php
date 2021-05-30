@@ -10,7 +10,7 @@ class Controller
     function __construct()
     {
         $this->css_link = array("app", "cardInfo/cardInfo", "social/socialNetwork", "profile/profile", "discussion/discussion", "project/project");
-        $this->js_link = array("js/script", "js/module/activity/activity_switcher","js/module/activity/index", "js/module/activity/displayActivity");
+        $this->js_link = array("js/script", "js/module/activity/activity_switcher","js/module/activity/index","js/module/activity/displayActivity","js/module/project/index","js/module/project/displayProject", "js/module/project/project_switcher");
         $this->title = "Portfolio | Baptiste Lecat";
         $this->content = null;
     }

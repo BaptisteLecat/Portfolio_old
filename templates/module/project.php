@@ -8,9 +8,9 @@
         <ul>
             <?php foreach ($this->list_category as $index => $category) { ?>
                 <?php if ($index == $this->selectedCategory) { ?>
-                    <li class="selected">
+                    <li class="selected" name="<?= $index ?>">
                     <?php } else { ?>
-                    <li>
+                    <li name="<?= $index ?>">
                     <?php } ?>
                     <img src="assets/img/project/category/<?= $category->getPicture(); ?>" alt="<?= $category->getLabel(); ?>" title="<?= $category->getLabel(); ?>">
                     <h6><?= $category->getLabel(); ?></h6>
