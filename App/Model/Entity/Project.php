@@ -2,7 +2,9 @@
 
 namespace App\Model\Entity;
 
-class Project
+use JsonSerializable;
+
+class Project implements JsonSerializable
 {
     private $id;
     private $title;
@@ -23,6 +25,20 @@ class Project
 
         $this->category = $category;
         $this->list_technology = array();
+    }
+
+    public function JsonSerialize()
+    {
+        return array(
+            'id' => $this->id,
+            'title' => $this->title,
+            'content' => $this->content,
+            'picture' => $this->picture,
+            'startDate' => $this->startDate,
+            'endDate' => $this->endDate,
+            'category' => $this->category->JsonSerialize(),
+            'stringDate' => $this->getStringProjectDate()
+        );
     }
 
     /**

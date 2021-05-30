@@ -2,9 +2,10 @@
 
 namespace App\Model\Entity;
 
+use JsonSerializable;
 use App\Model\Entity\Project;
 
-class Technology
+class Technology implements JsonSerializable
 {
     private $id;
     private $label;
@@ -20,6 +21,15 @@ class Technology
 
         $this->list_category = array();
         $this->list_project = array();
+    }
+
+    public function JsonSerialize()
+    {
+        return array(
+            'id' => $this->id,
+            'label' => $this->label,
+            'picture' => $this->picture
+        );
     }
 
     /**
