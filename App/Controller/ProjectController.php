@@ -37,11 +37,11 @@ class ProjectController extends MainController
         require("../templates/module/project.php");
     }
 
-    private function technologiesForCategory(){
+    public function technologiesForCategory(){
         return $this->list_category[$this->selectedCategory]->getList_Technology();
     }
 
-    private function projectsForCategory(){
+    public function projectsForCategory(){
         $list_project = array();
 
         foreach ($this->list_project as $project) {
