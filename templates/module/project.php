@@ -55,6 +55,25 @@
             </div>
         </section>
     </div>
+    <div class="project_container">
+        <header>
+            <picture class="close">
+                <img src="" alt="">
+            </picture>
+        </header>
+        <img class="project-picture" src="" alt="">
+        <section>
+            <div class="project_info">
+                <h1>Todo</h1>
+                <h6>2020 / 2021</h6>
+            </div>
+            <div class="btn_container">
+                <button>Information</button>
+                <button>Projet</button>
+            </div>
+        </section>
+        <p>Ce projet a été réalisé en parallèle de mes études de BTS SIO, afin d'approfondir mes compétences en développement. Le projet est passé par plusieurs versions, en partant d'une idée simple : réaliser un outil de gestion de tâches.</p>
+    </div>
 </div>
 
 <?php $this->addContent(ob_get_contents());
