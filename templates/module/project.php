@@ -58,10 +58,10 @@
     <div class="project_container">
         <header>
             <picture class="close">
-                <img src="" alt="">
+                <img src="assets/icons/close.svg" alt="close">
             </picture>
         </header>
-        <img class="project-picture" src="" alt="">
+        <img class="project-picture" src="assets/img/project/thumbnails/todo.png" alt="">
         <section>
             <div class="project_info">
                 <h1>Todo</h1>
