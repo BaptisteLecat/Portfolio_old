@@ -5,7 +5,7 @@
     </header>
     <div class="picture_container">
         <button name="previous"><img src="assets/icons/next.svg" alt=""></button>
-        <picture><img src="assets/img/<?= $activity->getInstanceName(); ?>/<?= $activity->getPicture(); ?>" alt=""></picture>
+        <picture><img src="assets/img/<?= strtolower($activity->getInstanceName()); ?>/<?= $activity->getPicture(); ?>" alt=""></picture>
         <button name="next"><img src="assets/icons/next.svg" alt=""></button>
     </div>
     <div class="content">
