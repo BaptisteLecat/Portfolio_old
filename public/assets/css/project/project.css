@@ -263,7 +263,7 @@
   border-radius: 10px;
 }
 
-.project_container .project-picture img {
+.project_container .project-picture {
   display: none;
   object-fit: cover;
 }
