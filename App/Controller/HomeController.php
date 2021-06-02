@@ -10,11 +10,11 @@ class HomeController extends MainController
         parent::__construct();
         $this->loadAll();
     }
-
+    
     public function display()
     {
-        $activityController = new ActivityController(1);
-        $activityController->display();
+        $projectController = new ProjectController(0);
+        $projectController->display();
         
         require("../templates/module/discussion.php");
         ob_end_clean();
@@ -26,15 +26,14 @@ class HomeController extends MainController
                 ob_end_clean();
             }
         }
+        $activityController = new ActivityController(1, 1);
+        $activityController->display();
         
         if ($this->getNbActiveSocialNetwork() > 0) {
             require("../templates/module/social-network.php");
             ob_end_clean();
         }
         
-        flush();
-        $projectController = new ProjectController(0);
-        $projectController->display();
 
     }
 
