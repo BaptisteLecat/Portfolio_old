@@ -39,7 +39,7 @@ class Project implements JsonSerializable
         return array(
             'id' => $this->id,
             'title' => $this->title,
-            'content' => $this->content,
+            'content' => $this->getContent(),
             'thumbnail' => $this->thumbnail,
             'startDate' => $this->startDate,
             'endDate' => $this->endDate,
@@ -97,13 +97,14 @@ class Project implements JsonSerializable
     public function getContent($limit = 74, $break = ".")
     {
         $pad = "...";
+        $string = $this->content;
         // return with no change if string is shorter than $limit
-        if (strlen($this->content) <= $limit) return $this->content;
+        if (strlen($string) <= $limit) return $string;
 
         // is $break present between $limit and the end of the string?
-        if (false !== ($breakpoint = strpos($this->content, $break, $limit))) {
-            if ($breakpoint < strlen($this->content) - 1) {
-                $string = substr($this->content, 0, $breakpoint) . $pad;
+        if (false !== ($breakpoint = strpos($string, $break, $limit))) {
+            if ($breakpoint < strlen($string) - 1) {
+                $string = substr($string, 0, $breakpoint) . $pad;
             }
         }
 
