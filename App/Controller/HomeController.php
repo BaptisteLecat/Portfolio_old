@@ -33,7 +33,7 @@ class HomeController extends MainController
         }
         
         flush();
-        $projectController = new ProjectController(1);
+        $projectController = new ProjectController(0);
         $projectController->display();
 
     }
