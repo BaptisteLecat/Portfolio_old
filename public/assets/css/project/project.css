@@ -222,17 +222,19 @@
 
 #project .project_container {
   height: 100%;
-  width: 200px;
+  width: 0px;
   box-shadow: -2px 0px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   position: absolute;
   right: 0px;
-  padding: 15px;
+  padding: 0px;
   background-color: #e9f5ff;
+  transition: ease-in-out;
+  transition-duration: 0.8s;
 }
 
 .project_container header {
-  display: flex;
+  display: none;
   height: auto;
   width: 100%;
   margin-bottom: 10px;
@@ -262,13 +264,14 @@
 }
 
 .project_container .project-picture img {
+  display: none;
   object-fit: cover;
 }
 
 .project_container section {
   height: auto;
   width: 100%;
-  display: flex;
+  display: none;
   flex-direction: column;
   margin: 10px 0px;
 }
@@ -320,6 +323,7 @@
 }
 
 .project_container p {
+  display: none;
   font-family: "Nunito";
   font-style: normal;
   font-weight: 600;
