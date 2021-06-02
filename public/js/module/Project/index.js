@@ -24,18 +24,18 @@ $("#project .app_container .project_wrapper").on(
       locked = true;
       setTimeout(unlock(), 10000);
       if (projectContainer_hidden) {
-        showProjectContainer();
+        showProjectContainer($(this));
         projectContainer_hidden = false;
       } else {
           if(firstDisplay){
-            showProjectContainer();
+            showProjectContainer($(this));
             projectContainer_hidden = false;
             firstDisplay = false;
           }else{
             hideProjectContainer();
             setTimeout(() => {
                 
-                showProjectContainer();
+                showProjectContainer($(this));
             }, 1000);
             projectContainer_hidden = false;
           }
@@ -65,7 +65,8 @@ function hideProjectContainer() {
   $("#project .project_container section").css("display", "none");
 }
 
-function showProjectContainer() {
+function showProjectContainer(projectElement) {
+  projectInfo(projectElement.attr("name"));
   setTimeout(() => {
     $("#project .project_container").css("width", "200px");
   }, 100);

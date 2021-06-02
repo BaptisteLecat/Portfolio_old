@@ -13,7 +13,7 @@ function displayProject(data) {
 
     var project_html = "";
     data.list_project.forEach((project) => {
-        project_html = project_html.concat(`                                    <div class="project">
+        project_html = project_html.concat(`                                    <div class="project" name="${project.id}">
                         <picture>
                             <img src="assets/img/project/thumbnails/${project.thumbnail}" alt="${project.title}" title="${project.title}">
                         </picture>

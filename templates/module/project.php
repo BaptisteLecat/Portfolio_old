@@ -38,7 +38,7 @@
             <div class="project_wrapper">
 
                 <?php foreach ($this->projectsForCategory() as $project) { ?>
-                    <div class="project">
+                    <div class="project" name="<?= $project->getId(); ?>">
                         <picture>
                             <img src="assets/img/project/thumbnails/<?= $project->getThumbnail(); ?>" alt="<?= $project->getTitle(); ?>" title="<?= $project->getTitle(); ?>">
                         </picture>
@@ -69,10 +69,10 @@
             </div>
             <div class="btn_container">
             <?php if(!is_null($project->getInfoLink())){ ?>
-                <button onclick="window.open('<?= $project->getInfoLink() ?>');">Information</button>
-                <button onclick="window.open('<?= $project->getMainLink() ?>');">Projet</button>
+                <a href="<?= $project->getInfoLink() ?>"><button>Information</button></a>
+                <a href="<?= $project->getMainLink() ?>"><button>Projet</button></a>
                 <?php }else{ ?>
-                <button onclick="window.open('<?= $project->getMainLink() ?>');">Projet</button>
+                    <a href="<?= $project->getMainLink() ?>"><button>Projet</button></a>
                 <?php } ?>
             </div>
         </section>
