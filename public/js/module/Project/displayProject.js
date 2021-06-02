@@ -15,7 +15,7 @@ function displayProject(data) {
     data.list_project.forEach((project) => {
         project_html = project_html.concat(`                                    <div class="project">
                         <picture>
-                            <img src="assets/img/project/thumbnails/${project.picture}" alt="${project.title}" title="${project.title}">
+                            <img src="assets/img/project/thumbnails/${project.thumbnail}" alt="${project.title}" title="${project.title}">
                         </picture>
                         <div class="content">
                             <h6>${project.title}</h6>

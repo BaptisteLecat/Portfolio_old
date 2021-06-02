@@ -19,7 +19,7 @@ class ProjectManager
             while ($result = $request->fetch()) {
                 //Load data of category.
                 $category = CategoryManager::selectCategoryFromId($result["project_categoryId"]);
-                $project = new Project($result["project_id"], $result["project_title"], $result["project_content"], $result["project_picture"], $result["project_startdate"], $result["project_enddate"], $category);
+                $project = new Project($result["project_id"], $result["project_title"], $result["project_content"], $result["project_thumbnail"], $result["project_startdate"], $result["project_enddate"], $result["project_picture"], $result["project_mainlink"], $result["project_infolink"], $category);
                 array_push($list_project, $project);
             }
         } catch (PDOException $e) {

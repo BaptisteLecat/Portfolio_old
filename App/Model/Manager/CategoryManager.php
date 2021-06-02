@@ -68,10 +68,10 @@ class CategoryManager
     public static function loadProjectForCategory(Category $category)
     {
         try {
-            $request = PdoFactory::getPdo()->prepare("SELECT project.project_id, project.project_title, project.project_content, project.project_picture, project.project_startdate, project.project_enddate FROM project WHERE project.project_categoryId = :project_categoryId");
+            $request = PdoFactory::getPdo()->prepare("SELECT project.project_id, project.project_title, project.project_content, project.project_thumbnail, project.project_startdate, project.project_enddate, project.project_picture, project.project_mainlink, project.project_infolink FROM project WHERE project.project_categoryId = :project_categoryId");
             $request->execute(array(':project_categoryId' => $category->getId()));
             while ($result = $request->fetch()) {
-                $project = new Project($result["project_id"], $result["project_title"], $result["project_content"], $result["project_picture"], $result["project_startdate"], $result["project_enddate"], $category);
+                $project = new Project($result["project_id"], $result["project_title"], $result["project_content"], $result["project_thumbnail"], $result["project_startdate"], $result["project_enddate"], $result["project_picture"], $result["project_mainlink"], $result["project_infolink"], $category);
                 $category->addProject($project);
             }
         } catch (PDOException $e) {

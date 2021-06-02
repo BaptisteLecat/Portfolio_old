@@ -40,7 +40,7 @@
                 <?php foreach ($this->projectsForCategory() as $project) { ?>
                     <div class="project">
                         <picture>
-                            <img src="assets/img/project/thumbnails/<?= $project->getPicture(); ?>" alt="<?= $project->getTitle(); ?>" title="<?= $project->getTitle(); ?>">
+                            <img src="assets/img/project/thumbnails/<?= $project->getThumbnail(); ?>" alt="<?= $project->getTitle(); ?>" title="<?= $project->getTitle(); ?>">
                         </picture>
                         <div class="content">
                             <h6><?= $project->getTitle(); ?></h6>
@@ -64,15 +64,19 @@
         <img class="project-picture" src="assets/img/project/thumbnails/todo.png" alt="">
         <section>
             <div class="project_info">
-                <h1>Todo</h1>
-                <h6>2020 / 2021</h6>
+                <h1><?= $project->getTitle(); ?></h1>
+                <h6><?= $project->getStringProjectDate(); ?></h6>
             </div>
             <div class="btn_container">
-                <button>Information</button>
-                <button>Projet</button>
+            <?php if(!is_null($project->getInfoLink())){ ?>
+                <button onclick="window.open('<?= $project->getInfoLink() ?>');">Information</button>
+                <button onclick="window.open('<?= $project->getMainLink() ?>');">Projet</button>
+                <?php }else{ ?>
+                <button onclick="window.open('<?= $project->getMainLink() ?>');">Projet</button>
+                <?php } ?>
             </div>
         </section>
-        <p>Ce projet a été réalisé en parallèle de mes études de BTS SIO, afin d'approfondir mes compétences en développement. Le projet est passé par plusieurs versions, en partant d'une idée simple : réaliser un outil de gestion de tâches.</p>
+        <p><?= $project->getContent(); ?></p>
     </div>
 </div>
 
