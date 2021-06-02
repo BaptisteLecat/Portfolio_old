@@ -10,7 +10,7 @@ class Controller
     function __construct()
     {
         $this->css_link = array("app", "cardInfo/cardInfo", "social/socialNetwork", "profile/profile", "discussion/discussion", "project/project");
-        $this->js_link = array("js/script", "js/module/activity/activity_switcher","js/module/activity/index","js/module/activity/displayActivity","js/module/project/index","js/module/project/displayProject", "js/module/project/project_switcher");
+        $this->js_link = array("js/script", "js/module/activity/activity_switcher","js/module/activity/index","js/module/activity/displayActivity","js/module/project/index","js/module/project/displayProject", "js/module/project/project_switcher", "js/module/project/project_info", "js/module/project/displayProjectInfo");
         $this->title = "Portfolio | Baptiste Lecat";
         $this->content = null;
     }
@@ -42,7 +42,7 @@ class Controller
         <link rel="icon" type="image/png" href="../assets/img/LogoBaptiste.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
-        <base href="https://baptiste-lecat.alwaysdata.net"/>
+        <base href="http://portfolio"/>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
