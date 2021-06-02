@@ -52,4 +52,17 @@ class ProjectController extends MainController
 
         return $list_project;
     }
+
+    public function getProjectFromId(int $id){
+        $object = null;
+
+        foreach ($this->list_project as $project) {
+            if($project->getId() == $id){
+                $object = $project;
+                break;
+            }
+        }
+
+        return $object;
+    }
 }
