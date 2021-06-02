@@ -19,7 +19,7 @@ function displayProject(data) {
                         </picture>
                         <div class="content">
                             <h6>${project.title}</h6>
-                            <p>${project.content}</p>
+                            <p>${project.shortContent}</p>
                         </div>
                         <footer>
                             <p>${project.stringDate}</p>

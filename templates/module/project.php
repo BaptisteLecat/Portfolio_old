@@ -44,7 +44,7 @@
                         </picture>
                         <div class="content">
                             <h6><?= $project->getTitle(); ?></h6>
-                            <p><?= $project->getContent(); ?></p>
+                            <p><?= $project->getContent(90); ?></p>
                         </div>
                         <footer>
                             <p><?= $project->getStringProjectDate(); ?></p>
@@ -69,14 +69,14 @@
             </div>
             <div class="btn_container">
             <?php if(!is_null($project->getInfoLink())){ ?>
-                <a href="<?= $project->getInfoLink() ?>"><button>Information</button></a>
-                <a href="<?= $project->getMainLink() ?>"><button>Projet</button></a>
+                <a href="<?= $project->getInfoLink() ?>" target="_blank"><button>Information</button></a>
+                <a href="<?= $project->getMainLink() ?>" target="_blank"><button>Projet</button></a>
                 <?php }else{ ?>
-                    <a href="<?= $project->getMainLink() ?>"><button>Projet</button></a>
+                    <a href="<?= $project->getMainLink() ?>" target="_blank"><button>Projet</button></a>
                 <?php } ?>
             </div>
         </section>
-        <p><?= $project->getContent(); ?></p>
+        <p><?= $project->getContent(74); ?></p>
     </div>
 </div>
 

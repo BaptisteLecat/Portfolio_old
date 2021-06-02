@@ -1,5 +1,5 @@
 function displayProjectInfo(data) {
-    $("#project .project_container .project-picture img").attr("src", data.project.picture);
+    $("#project .project_container .project-picture").attr("src", `assets/img/project/picture/${data.project.picture}`);
     $("#project .project_container section .project_info h1").text(data.project.title);
     $("#project .project_container section .project_info h6").text(data.project.stringDate);
 
@@ -12,5 +12,5 @@ function displayProjectInfo(data) {
         $("#project .project_container section .btn_container a:nth-child(2)").attr("href", data.project.mainLink);
     }
 
-    $("#project .project_container p").text(data.project.content);
+    $("#project .project_container p").text(data.project.longContent);
 }
