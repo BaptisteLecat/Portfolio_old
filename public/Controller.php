@@ -42,7 +42,7 @@ class Controller
         <link rel="icon" type="image/png" href="../assets/img/LogoBaptiste.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
-        <base href="http://portfolio"/>
+        <base href="https://baptiste-lecat.alwaysdata.net"/>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
