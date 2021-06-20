@@ -7,12 +7,8 @@ require 'Controller.php';
 $uri = $_SERVER['REQUEST_URI'];
 $appController = new Controller();
 $router = new AltoRouter();
-
-//$test = new HomeController();
-
 $router->map('GET', '/', 'home');
 $router->map('GET', '/home', 'home');
-$router->map('GET', '/contact', 'contact', 'contact');
 
 $match = $router->match();
 
@@ -26,7 +22,11 @@ if (is_array($match)) {
     $controller->display();
     echo $controller->getContent();
 } else {
-    require "../templates/errors/404.php";
+    $controllerName = "App\\Controller\\HomeController";
+    $controller = new $controllerName;
+
+    $controller->display();
+    echo $controller->getContent();
 }
 
 echo $appController->footer();

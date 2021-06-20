@@ -16,9 +16,9 @@
         </div>
         <footer>
             <div class="input_container">
-                <button><img src="assets/icons/discussion/more.svg" alt=""></button>
+                <button name="more"><img src="assets/icons/discussion/more.svg" alt=""></button>
                 <input type="text" name="message" id="message" placeholder="Ecrire un message">
-                <button><img src="assets/icons/discussion/message_circle.svg" alt=""></button>
+                <button name="send"><img src="assets/icons/discussion/message_circle.svg" alt=""></button>
             </div>
         </footer>
     </div>

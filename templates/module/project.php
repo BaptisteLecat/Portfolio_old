@@ -61,7 +61,7 @@
                 <img src="assets/icons/close.svg" alt="close">
             </picture>
         </header>
-        <img class="project-picture" src="assets/img/project/thumbnails/todo.png" alt="">
+        <img class="project-picture" src="" alt="">
         <section>
             <div class="project_info">
                 <h1><?= $project->getTitle(); ?></h1>
@@ -69,10 +69,10 @@
             </div>
             <div class="btn_container">
             <?php if(!is_null($project->getInfoLink())){ ?>
-                <a href="<?= $project->getInfoLink() ?>" target="_blank"><button>Information</button></a>
-                <a href="<?= $project->getMainLink() ?>" target="_blank"><button>Projet</button></a>
+                <a href="<?= $project->getInfoLink() ?>" rel="noopener noreferrer" title="Information" target="_blank"><button>Information</button></a>
+                <a href="<?= $project->getMainLink() ?>" rel="noopener noreferrer" title="Projet" target="_blank"><button>Projet</button></a>
                 <?php }else{ ?>
-                    <a href="<?= $project->getMainLink() ?>" target="_blank"><button>Projet</button></a>
+                    <a href="<?= $project->getMainLink() ?>" rel="noopener noreferrer" title="Projet" target="_blank"><button>Projet</button></a>
                 <?php } ?>
             </div>
         </section>

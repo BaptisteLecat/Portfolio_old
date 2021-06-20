@@ -4,6 +4,7 @@
   display: flex;
   font-family: "Nunito", sans-serif;
   border-radius: 20px;
+  cursor: grab;
 }
 
 #project nav {
