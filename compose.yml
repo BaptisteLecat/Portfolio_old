@@ -1,0 +1,37 @@
+version: '3.0'
+
+services:
+  portfolio:
+    container_name: portfolio
+    image: portfolio
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/app
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    ports:
+      - 3004:80
+  portfolio-db:
+    image: mysql
+    command: --default-authentication-plugin=caching_sha2_password
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=user
+      - MYSQL_PASSWORD=user
+      - MYSQL_DATABASE=portfolio
+      - MYSQL_USER=user
+    volumes:
+      - ./docker/mysql-dump/portfolio:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8085:8080
